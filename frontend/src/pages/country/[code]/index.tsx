@@ -6,9 +6,8 @@ export default function Page() {
   const router = useRouter();
   const countryCode = router.query.code;
   const { data } = useGetCountryByCodeQuery({
-    variables: { code: typeof countryCode === "string" ? countryCode : "NONE" },
+    variables: { code: typeof countryCode === "string" ? countryCode : "" },
   });
-  console.log(data?.country);
   return (
     <>
       <Header />

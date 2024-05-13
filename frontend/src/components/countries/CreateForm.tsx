@@ -1,9 +1,10 @@
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
 import FormInput from "../FormInput";
 import { useRouter } from "next/router";
 import SelectInput from "../SelectInput";
 import { useCreateCountryMutation, useGetContinentQuery } from "@/graphql/generated/schema";
 import client from "@/graphql/client";
+import { toast } from "react-toastify";
 
 const createFields = [
   {
@@ -25,9 +26,15 @@ const createFields = [
 
 export default function CreateForm() {
   const router = useRouter();
-  const [createCountry] = useCreateCountryMutation();
+  const [createCountry, { error }] = useCreateCountryMutation();
   const { data: continentList } = useGetContinentQuery();
-  console.log(continentList?.continents);
+  useEffect(() => {
+    if (error?.graphQLErrors.length) {
+      for (const e of error.graphQLErrors) {
+        toast.error(e.message);
+      }
+    }
+  });
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
