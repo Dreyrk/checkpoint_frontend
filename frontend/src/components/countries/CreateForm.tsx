@@ -40,8 +40,7 @@ export default function CreateForm() {
     try {
       const formData = new FormData(e.target as HTMLFormElement);
       const formJSON: any = Object.fromEntries(formData.entries());
-      const res = await createCountry({ variables: { data: { ...formJSON } } });
-      router.push(`/country/${res.data?.addCountry.code}`);
+      await createCountry({ variables: { data: { ...formJSON } } });
     } catch (e) {
       console.error((e as Error).message);
     } finally {
