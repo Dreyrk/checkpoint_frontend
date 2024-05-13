@@ -1,3 +1,5 @@
+import { Continent } from "./graphql/generated/schema";
+
 export interface FormInputProps {
   id: string;
   label: string;
@@ -13,5 +15,5 @@ export type OptionItem = {
 
 export type SelectInputProps = {
   id: string;
-  options: any;
+  options?: Continent[] | undefined;
 };

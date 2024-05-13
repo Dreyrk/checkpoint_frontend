@@ -53,7 +53,7 @@ export default function CreateForm() {
       {createFields.map(({ id, label, type }) => (
         <FormInput id={id} label={label} type={type} key={id} />
       ))}
-      {/* <SelectInput id="country_continent_select" options={continentList?.continents} /> */}
+      <SelectInput id="continent[name]" options={continentList?.continents} />
       <FormInput type="submit" id="submit_create_country" label="Create" style="self-end" />
     </form>
   );
