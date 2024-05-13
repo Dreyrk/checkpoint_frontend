@@ -1,0 +1,6 @@
+query getContinent {
+  continents {
+    id
+    name
+  }
+}

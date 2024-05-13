@@ -1,0 +1,6 @@
+mutation CreateContinent($data: NewContinentInput!) {
+  addContinent(data: $data) {
+    id
+    name
+  }
+}
